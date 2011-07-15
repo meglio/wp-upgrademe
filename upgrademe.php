@@ -3,7 +3,7 @@
 Plugin Name: upgrademe
 Description: Allows auto-upgrade for plugins outside of official WordPress repository
 Company: Copyright 2011 Meglio. All rights reserved
-Version: 0.9
+Version: 0.1
 Author: Meglio (Anton Andriyevskyy)
 Plugin URI: https://github.com/meglio/wp-upgrademe
 */
@@ -98,6 +98,11 @@ class Upgrademe
 			# Do not override data returned by official WP plugins repository API
 			if (isset($body[$file]))
 				continue;
+
+			# If new version is different then current one, only then add info
+			if (!isset($plugins[$file]['Version']) || $plugins[$file]['Version'] == $upgradeVars['new_version'])
+				continue;
+
 			$upgradeInfo = new stdClass();
 			$upgradeInfo->id = $upgradeVars['id'];
 			$upgradeInfo->slug = $upgradeVars['slug'];
@@ -126,6 +131,15 @@ class Upgrademe
 		return (object)$vars['info'];
 	}
 
+	public static function wpFilter_http_request_args($args, $url)
+	{
+		if (strpos($url, 'wp-upgrademe') === false || !is_array($args))
+			return $args;
+
+		$args['sslverify'] = false;
+		return $args;
+	}
+
 	private static function loadPluginData($slug)
 	{
 		if (isset(self::$data[$slug]))
@@ -141,7 +155,7 @@ class Upgrademe
 
 		# Request latest version signature from custom url (non-WP plugins repository api) && validate response variables
 		$r = wp_remote_post($upgradeUrl, array('method' => 'POST', 'timeout' => 4, 'redirection' => 5, 'httpversion' => '1.0', 'blocking' => true,
-			'headers' => array(),	'body' => null, 'cookies' => array()));
+			'headers' => array(),	'body' => null, 'cookies' => array(), 'sslverify' => false));
 
 		if( is_wp_error($r) || !isset($r['body']) || empty($r['body']))
 			return self::$data[$slug] = null;
@@ -179,8 +193,6 @@ class Upgrademe
 
 		return self::$data[$slug] = $vars;
 	}
-
-	final function abstra() {}
 }
 Upgrademe::register();
 
