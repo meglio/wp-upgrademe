@@ -27,9 +27,9 @@ For example, if your main plugin file is *superplug.php*, then function name wil
 On url provided by your xxx_upgrademe function, return json of this structure:
 
 	{
-		"new_version":"0.9",
+		"new_version":"1.0",
 		"url":"https://github.com/meglio/wp-upgrademe",
-		"package":"https://github.com/downloads/meglio/wp-upgrademe/upgrademe-0.1.zip",
+		"package":"https://github.com/downloads/meglio/wp-upgrademe/upgrademe-1.0.zip",
 		"info":{
 			"name":"upgrademe",
 			"author":"<a href='https://github.com/meglio'>Meglio</a>",
