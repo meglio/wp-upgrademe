@@ -29,7 +29,7 @@ On url provided by your xxx_upgrademe function, return json of this structure:
 	{
 		"new_version":"0.9",
 		"url":"https://github.com/meglio/wp-upgrademe",
-		"package":"",
+		"package":"https://github.com/downloads/meglio/wp-upgrademe/upgrademe-0.1.zip",
 		"info":{
 			"name":"upgrademe",
 			"author":"<a href='https://github.com/meglio'>Meglio</a>",
