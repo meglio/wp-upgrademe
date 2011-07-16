@@ -1,5 +1,5 @@
 {
-"new_version": "0.1",
+"new_version": "0.2",
 "url": "https://github.com/meglio/wp-upgrademe",
 "package": "https://github.com/downloads/meglio/wp-upgrademe/upgrademe-0.1.zip",
 "info": {

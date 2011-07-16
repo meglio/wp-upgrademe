@@ -3,7 +3,7 @@
 Plugin Name: upgrademe
 Description: Allows auto-upgrade for plugins outside of official WordPress repository
 Company: Copyright 2011 Meglio. All rights reserved
-Version: 0.1
+Version: 0.2
 Author: Meglio (Anton Andriyevskyy)
 Plugin URI: https://github.com/meglio/wp-upgrademe
 */
@@ -74,7 +74,7 @@ class Upgrademe
 		foreach($plugins as $file => $info)
 		{
 			# Get url if function exists
-			$slugName = basename($file, '.php');
+			$slugName = str_replace('-', '_', basename($file, '.php'));
 
 			# Request latest version signature from custom url (non-WP plugins repository api) && validate response variables
 			$recursion = true;

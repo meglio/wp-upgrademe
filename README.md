@@ -20,6 +20,8 @@ For example, if your main plugin file is *superplug.php*, then function name wil
 
 	function superplug_upgrademe() { ... }
 
+If your file name contains dashes "-", just replace them by underscores "_".
+
 *btw, upgrademe plugin uses itself for auto-update and declares function upgrademe_upgrademe()*
 
 ### Step 2: provide version info from your server
