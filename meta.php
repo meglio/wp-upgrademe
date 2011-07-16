@@ -1,7 +1,7 @@
 {
 "new_version": "0.2",
 "url": "https://github.com/meglio/wp-upgrademe",
-"package": "https://github.com/downloads/meglio/wp-upgrademe/upgrademe-0.1.zip",
+"package": "https://github.com/downloads/meglio/wp-upgrademe/upgrademe-0.2.zip",
 "info": {
 "name": "upgrademe",
 "author": "<a href='https://github.com/meglio'>Meglio</a>",
